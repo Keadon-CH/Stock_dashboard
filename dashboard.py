@@ -13,6 +13,8 @@ st.write("This is a simple interactive stock dashboard showing price movements o
 
 if not ticker:
     st.error('Please enter a ticker symbol e.g. AMZN')
+elif start_date >= datetime.date.today():
+    st.error('Please select a start date before today's date.') # catching the 'out of bounds' exception 
 else:
 
     ticker_obj = yf.Ticker(ticker)
