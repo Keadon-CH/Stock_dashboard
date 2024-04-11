@@ -13,8 +13,12 @@ st.write("This is a simple interactive stock dashboard showing price movements o
 
 if not ticker:
     st.error('Please enter a ticker symbol e.g. AMZN')
+    
 elif start_date >= datetime.date.today():
-    st.error('Please select a start date before today's date.') # catching the 'out of bounds' exception 
+    st.error('Please select a start date before the current date.')
+elif end_date <= start_date:
+    st.error('End date must be after the start date.')
+
 else:
 
     ticker_obj = yf.Ticker(ticker)
@@ -56,4 +60,5 @@ else:
             published_date = articles[i]['publishedAt']
             formatted_date = datetime.datetime.strptime(published_date, "%Y-%m-%dT%H:%M:%SZ").strftime("%d %b %Y, %H:%M")  
             st.write(f"Published: {formatted_date}")
+
 st.caption('© 2024 Keadon Harrison. All rights reserved.')
