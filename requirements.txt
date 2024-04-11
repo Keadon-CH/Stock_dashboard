@@ -1,0 +1,5 @@
+newsapi==0.1.1
+newsapi_python==0.2.7
+plotly==5.20.0
+streamlit==1.33.0
+yfinance==0.2.37
